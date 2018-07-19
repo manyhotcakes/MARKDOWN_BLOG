@@ -7,7 +7,7 @@
 This project is using Laravel v5.6.
 https://laravel.com/docs/5.6/installation
 
-if this app will work on your pc, you have to make sure following requirements:
+if you want that this app work on your pc, you have to make sure following requirements:
 
 - php >= 7.1.3
 - composer >= 1.6.5
