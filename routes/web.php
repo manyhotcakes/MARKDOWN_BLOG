@@ -32,3 +32,5 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 // Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/auth/upload', 'HomeController@uploadForm')->name('upload');
+Route::post('/auth/upload', 'HomeController@upload');
