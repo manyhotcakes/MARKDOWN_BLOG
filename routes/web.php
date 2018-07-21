@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ArticleController@index')->name('list');
+Route::get('{id}', 'ArticleController@show')->where('id', '[0-9]+')->name('article');
 
 // Auth::routes();
 // Authentication Routes...

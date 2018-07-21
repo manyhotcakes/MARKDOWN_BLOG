@@ -1,11 +1,11 @@
-@extends('layouts.auth')
+@extends('layouts.public')
 
 @section('content')
 <div class="container">
     <div>
       <v-layout row>
         <v-flex xs12>
-          <article-list mode="admin" rowdata="{{ $articles->toJson() }}"></article-list>
+          <article-list rowdata="{{ $articles->toJson() }}"></article-list>
         </v-flex>
       </v-layout>
       {{ $articles->links('vendor.pagination.default') }}

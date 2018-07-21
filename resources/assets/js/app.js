@@ -23,6 +23,7 @@ Vue.use(Vuetify)
 const app = new Vue({
     el: '#app',
     components: {
-      'example-component': () => import('./components/ExampleComponent.vue' /* webpackChunkName: "js/example-component" */)
+      'example-component': () => import('./components/ExampleComponent.vue' /* webpackChunkName: "js/example-component" */),
+      'article-list': () => import('./components/ArticleList.vue' /* webpackChunkName: "js/article-list" */),
     }
 });

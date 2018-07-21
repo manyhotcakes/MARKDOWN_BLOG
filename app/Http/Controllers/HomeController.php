@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Article;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Log;
+use DB;
+use Storage;
+use Log;
 
 class HomeController extends Controller
 {
@@ -77,9 +77,8 @@ class HomeController extends Controller
             $imagefilename = "{$user_id}_{$currenttime_withmicro}.{$extention}";
             // ストレージに保存
             $image_path = $request->image->storeAs(
-              'public/image', $imagefilename
+              'image', $imagefilename, ['disk' => 'public']
             );
-            $image_path = preg_replace('/^public/', '', $image_path);
 
             $article = new Article;
             $article->subject = $request->subject ? $request->subject : 'Untitled';
