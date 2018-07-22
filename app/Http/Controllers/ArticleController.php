@@ -16,7 +16,7 @@ class ArticleController extends Controller
     {
       $articles = Article::where('delete_flg', false)
       ->orderBy('id', 'desc')
-      ->paginate(2);
+      ->paginate(env('NUM_OF_ARTICLES_PERPAGE'));
       return view('index', ['articles' => $articles]);
     }
 
