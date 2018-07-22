@@ -64,9 +64,6 @@
                                     <a class="dropdown-item" href="{{ route('home') }}">
                                         {{ __('一覧ページ') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('upload') }}">
-                                        {{ __('記事投稿') }}
-                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

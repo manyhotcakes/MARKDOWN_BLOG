@@ -1,6 +1,6 @@
 <template>
-  <v-container fluid>
-    <v-form id="uploader" enctype="multipart/form-data" method="post">
+  <v-container>
+    <v-form id="uploader" :action="url" enctype="multipart/form-data" method="post">
       <v-layout row wrap>
         <v-flex xs12 class="text-sm-center">
           <v-text-field
@@ -61,7 +61,8 @@ export default {
     FileInput
   },
   props: {
-    token: {}
+    token: {},
+    url: String
   },
   data: () => ({
     file: null,

@@ -36,15 +36,6 @@ class AuthController extends Controller
     }
 
     /**
-     * [uploadForm description]
-     * @return [type] [description]
-     */
-    public function uploadForm()
-    {
-        return view('auth/upload');
-    }
-
-    /**
      * [upload description]
      * @param  Request $request [description]
      * @return [type]           [description]

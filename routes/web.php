@@ -31,6 +31,5 @@ Route::post('/auth/logout', 'Auth\LoginController@logout')->name('logout');
 // Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/auth/', 'AuthController@index')->name('home');
-Route::get('/auth/upload', 'AuthController@uploadForm')->name('upload');
-Route::post('/auth/upload', 'AuthController@upload');
+Route::post('/auth/upload', 'AuthController@upload')->name('upload');
 Route::post('/auth/remove/{id}', 'AuthController@remove')->where('id', '[0-9]+')->name('remove');

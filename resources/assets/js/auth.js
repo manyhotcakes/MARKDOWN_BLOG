@@ -26,7 +26,7 @@ const app = new Vue({
     el: '#app',
     components: {
       'example-component': () => import('./components/ExampleComponent.vue' /* webpackChunkName: "js/example-component" */),
-      'uploader': () => import('./components/Uploader.vue' /* webpackChunkName: "js/uploader-component" */),
+      'uploadfooter': () => import('./components/Uploadfooter.vue' /* webpackChunkName: "js/uploader-component" */),
       'article-list': () => import('./components/ArticleList.vue' /* webpackChunkName: "js/article-list" */),
     }
 });
