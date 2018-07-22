@@ -26,7 +26,7 @@
 </head>
 <body>
     <div id="app">
-      <v-app>
+      <v-app v-cloak>
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">

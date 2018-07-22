@@ -16,9 +16,9 @@ Route::get('{id}', 'ArticleController@show')->where('id', '[0-9]+')->name('artic
 
 // Auth::routes();
 // Authentication Routes...
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/auth/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('/auth/login', 'Auth\LoginController@login');
+Route::post('/auth/logout', 'Auth\LoginController@logout')->name('logout');
 
 // Registration Routes...
 // Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
@@ -30,6 +30,7 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 // Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 // Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/auth/upload', 'HomeController@uploadForm')->name('upload');
-Route::post('/auth/upload', 'HomeController@upload');
+Route::get('/auth/', 'AuthController@index')->name('home');
+Route::get('/auth/upload', 'AuthController@uploadForm')->name('upload');
+Route::post('/auth/upload', 'AuthController@upload');
+Route::post('/auth/remove/{id}', 'AuthController@remove')->where('id', '[0-9]+')->name('remove');

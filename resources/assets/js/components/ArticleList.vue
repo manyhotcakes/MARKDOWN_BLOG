@@ -8,7 +8,9 @@
           :image="item.image_path"
           :body="item.body"
           :key="item.id"
-          :articleUrl="item.article_url"
+          :article-url="item.article_url"
+          :remove-url="item.remove_url"
+          :token="token"
           :mode="mode"
         >
         </article-list-item>
@@ -22,6 +24,7 @@ import ArticleListItem from './ArticleListItem.vue'
   export default {
     props: {
       rowdata: String,
+      token: String,
       mode: {
         type: String,
         default: 'normal'

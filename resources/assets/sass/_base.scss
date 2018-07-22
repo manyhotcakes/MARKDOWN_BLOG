@@ -5,3 +5,7 @@ a {
     text-decoration: underline dashed currentColor;
   }
 }
+
+[v-cloak] {
+  display: none;
+}

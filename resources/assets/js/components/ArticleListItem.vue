@@ -16,9 +16,12 @@
       </v-list-tile>
       <v-list-tile v-if="isAdmin">
         <v-flex xs12 class="text-xs-right">
-          <v-btn color="primary">
-            delete<v-icon>delete_forever</v-icon>
-          </v-btn>
+          <v-form :action="removeUrl" method="post" @submit.stop="onSubmit($event)">
+            <input type="hidden" name="_token" :value="token">
+            <v-btn type="submit" color="primary">
+              delete<v-icon>delete_forever</v-icon>
+            </v-btn>
+          </v-form>
         </v-flex>
       </v-list-tile>
     </a>
@@ -40,6 +43,8 @@
       image: String,
       body: String,
       articleUrl: String,
+      removeUrl: String,
+      token: String,
       mode: {
         type: String,
         default: 'normal'
@@ -57,6 +62,14 @@
           return `#${this.id} ${this.subject}`
         } else {
           return this.subject
+        }
+      }
+    },
+    methods: {
+      onSubmit(event) {
+        if (!confirm('Are you sure you want to delete this article?')) {
+          if (event) event.preventDefault()
+          return false
         }
       }
     }

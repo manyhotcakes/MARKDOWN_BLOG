@@ -10,7 +10,7 @@ use DB;
 use Storage;
 use Log;
 
-class HomeController extends Controller
+class AuthController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -35,11 +35,20 @@ class HomeController extends Controller
         return view('auth/home', ['articles' => $articles]);
     }
 
+    /**
+     * [uploadForm description]
+     * @return [type] [description]
+     */
     public function uploadForm()
     {
         return view('auth/upload');
     }
 
+    /**
+     * [upload description]
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
     public function upload(Request $request)
     {
       $UPLOAD_FILESIZE_MAX = env("UPLOAD_FILESIZE_MAX");
@@ -88,23 +97,47 @@ class HomeController extends Controller
             $article->image_path= $image_path;
             $article->save();
             DB::commit();
-            return redirect('/home')->with('success', '保存しました。');
+            return redirect()->route('home')->with('success', '保存しました。');
           } catch (\Exception $e) {
             // 失敗時はロールバック
             DB::rollback();
             if ($image_path) {
               Storage::delete($image_path);
             }
+            Log::error($e);
             return redirect()
                     ->back()
                     ->withInput()
-                    ->withErrors(['file' => 'エラーが発生しました。' . $e->getMessage()]);
+                    ->withErrors(['article' => 'エラーが発生しました。' . $e->getMessage()]);
           }
       }
 
       return redirect()
               ->back()
               ->withInput()
-              ->withErrors(['file' => '画像がアップロードされていないか不正なデータです。']);
+              ->withErrors(['article' => '画像がアップロードされていないか不正なデータです。']);
+    }
+
+    /**
+     * [remove description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function remove($id) {
+      DB::beginTransaction();
+      try {
+        $article = Article::find($id);
+        $article->delete_flg = true;
+        $article->save();
+        DB::commit();
+        return redirect()->route('home')->with('success', '保存しました。');
+      } catch (\Exception $e) {
+        // 失敗時
+        Log::error($e);
+        return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors(['article' => '削除に失敗しました']);
+      }
     }
 }

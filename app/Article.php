@@ -14,7 +14,7 @@ class Article extends Model
    */
   protected $table = 'articles';
   protected $primaryKey = 'id';
-  protected $appends = ['article_url']; //リスト表示時記事リンク先URL用に生成
+  protected $appends = ['article_url', 'remove_url']; //リスト表示時記事リンク先URL用に生成
 
   public function getImagePathAttribute($value) {
     return Storage::url($value);
@@ -26,5 +26,9 @@ class Article extends Model
 
   public function getArticleUrlAttribute() {
     return URL::route('article', ['id'=>$this->attributes['id']]);
+  }
+
+  public function getRemoveUrlAttribute() {
+    return URL::route('remove', ['id'=>$this->attributes['id']]);
   }
 }
