@@ -11,15 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ArticleController@index')->name('list');
+Route::get('{id}', 'ArticleController@detail')->where('id', '[0-9]+')->name('detail');
 
 // Auth::routes();
 // Authentication Routes...
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::prefix('auth')->group(function () {
+  Route::get('/', 'AuthController@index')->name('home');
+  Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+  Route::post('login', 'Auth\LoginController@login');
+  Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+  Route::get('upload', function() { return redirect()->route('home'); });
+  Route::post('upload', 'AuthController@upload')->name('upload');
+  Route::post('remove/{id}', 'AuthController@remove')->where('id', '[0-9]+')->name('remove');
+});
+
 
 // Registration Routes...
 // Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
@@ -30,5 +37,3 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 // Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 // Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 // Route::post('password/reset', 'Auth\ResetPasswordController@reset');
-
-Route::get('/home', 'HomeController@index')->name('home');

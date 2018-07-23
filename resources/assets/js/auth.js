@@ -1,5 +1,6 @@
-import Vue from 'vue'
-import Vuetify from 'vuetify'
+import Vue from 'vue';
+import Vuetify from 'vuetify';
+import VeeValidate from 'vee-validate'
 import marked from './plugins/marked'
 import axios from './plugins/axios'
 import lodash from './plugins/lodash'
@@ -10,7 +11,10 @@ import lodash from './plugins/lodash'
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+require('./bootstrap')
+
 Vue.use(Vuetify)
+Vue.use(VeeValidate)
 Vue.use(marked)
 Vue.use(axios)
 Vue.use(lodash)
@@ -24,9 +28,7 @@ Vue.use(lodash)
 const app = new Vue({
     el: '#app',
     components: {
-      'TitleArea': () => import('./components/TitleArea.vue' /* webpackChunkName: "js/title-area" */),
-      'ArticleList': () => import('./components/ArticleList.vue' /* webpackChunkName: "js/article-list" */),
-      'ArticleDetail': () => import('./components/ArticleDetail.vue' /* webpackChunkName: "js/article-detail" */),
-      'Breadcrumbs': () => import('./components/Breadcrumbs.vue' /* webpackChunkName: "js/breadcrumbs" */),
+      'uploadfooter': () => import('./components/Uploadfooter.vue' /* webpackChunkName: "js/uploader-component" */),
+      'article-list': () => import('./components/ArticleList.vue' /* webpackChunkName: "js/article-list" */),
     }
 });

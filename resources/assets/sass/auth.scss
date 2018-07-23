@@ -2,13 +2,12 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
 // Variables
-@import '~yui/cssreset/cssreset-min.css';
-@import 'base';
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-// @import '~bootstrap/scss/bootstrap';
-// @import '~vuetify/dist/vuetify.min.css';
+@import '~bootstrap/scss/bootstrap';
+
+@import 'base';
 @import 'components/pagenate';
 
 .navbar-laravel {

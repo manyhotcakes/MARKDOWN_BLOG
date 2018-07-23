@@ -25,8 +25,8 @@
 </head>
 <body>
   <div id="app">
-    <v-app>
-      <main class="py-4">
+    <v-app v-cloak>
+      <main>
           @yield('content')
       </main>
     </v-app>
