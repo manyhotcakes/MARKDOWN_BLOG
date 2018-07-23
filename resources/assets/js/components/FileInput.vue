@@ -1,15 +1,21 @@
 <template>
-  <v-layout row wrap>
+  <v-layout wrap>
       <v-btn class="ml-0" :disabled="disabled" color="white" @click="onFocus" v-text="label"></v-btn>
       <input type="file" :name="name" :accept="accept" :multiple="false" :disabled="disabled"
              ref="fileInput" @change="onFileChange" style="display:none;">
      <v-text-field
+     class="filename"
      flat
      v-model="filename"
      disabled/>
   </v-layout>
 </template>
 
+<style scoped>
+.filename {
+  flex-basis: 0;
+}
+</style>
 
 <script>
   export default {

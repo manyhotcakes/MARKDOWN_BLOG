@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-list two-line>
-      <template v-for="(item, index) in items">
+      <template v-for="(item, index) in items" v-if="items.length">
         <article-list-item
           :id="item.id"
           :subject="item.subject"
@@ -15,6 +15,13 @@
         >
         </article-list-item>
         <v-divider v-if="items.length - 1 !== index"></v-divider>
+      </template>
+      <template v-if="!items.length">
+        <v-list-tile class="text-xs-center">
+          <v-flex>
+          No Entries
+          </v-flex>
+        </v-list-tile>
       </template>
     </v-list>
   </v-card>

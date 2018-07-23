@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-form id="uploader" :action="url" enctype="multipart/form-data" method="post">
-      <v-layout row wrap>
+      <v-layout column wrap>
         <v-flex xs12 class="text-sm-center">
           <v-text-field
           v-validate="'required|max:255'"
@@ -33,13 +33,6 @@
       </v-layout>
       <input type="hidden" name="_token" v-model="token">
     </v-form>
-    <div>
-      <v-progress-linear
-        v-show="uploading"
-        :indeterminate="true"
-        height="4"
-      />
-    </div>
   </v-container>
 </template>
 
