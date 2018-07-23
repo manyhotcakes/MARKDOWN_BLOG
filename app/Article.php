@@ -25,7 +25,7 @@ class Article extends Model
   }
 
   public function getArticleUrlAttribute() {
-    return URL::route('article', ['id'=>$this->attributes['id']]);
+    return URL::route('detail', ['id'=>$this->attributes['id']]);
   }
 
   public function getRemoveUrlAttribute() {

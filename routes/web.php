@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'ArticleController@index')->name('list');
-Route::get('{id}', 'ArticleController@show')->where('id', '[0-9]+')->name('article');
+Route::get('{id}', 'ArticleController@detail')->where('id', '[0-9]+')->name('detail');
 
 // Auth::routes();
 // Authentication Routes...

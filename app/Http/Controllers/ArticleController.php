@@ -26,9 +26,9 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function detail($id)
     {
       $article = Article::find($id);
-      var_dump($article);
+      return view('detail', ['article' => $article]);
     }
 }
