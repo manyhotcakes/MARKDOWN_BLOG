@@ -14,6 +14,7 @@ if you want that this app work on your pc, you have to make sure following requi
 - php >= 7.1.3
 - composer >= 1.6.5
 - node >= v8.11.3
+- Yarn
 - Docker
 - DockerCompose
 
@@ -30,8 +31,8 @@ php artisan key:generate
 php artisan storage:link
 
 # generate front codes
-yum install
-yum run prod
+yarn install
+yarn run prod
 
 # set database
 cd docker
