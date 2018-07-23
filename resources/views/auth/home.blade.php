@@ -18,17 +18,11 @@
   @endif
 
   <div class="container">
-      <div>
-        <v-layout row>
-          <v-flex xs12>
-            <article-list
-              mode="admin"
-              rowdata="{{ $articles->toJson() }}"
-              token="{{csrf_token()}}"></article-list>
-          </v-flex>
-        </v-layout>
-        {{ $articles->links('vendor.pagination.default') }}
-      </div>
+    <article-list
+      mode="admin"
+      rowdata="{{ $articles->toJson() }}"
+      token="{{csrf_token()}}"></article-list>
+    {{ $articles->links('vendor.pagination.default') }}
   </div>
 </v-content>
 <uploadfooter token="{{csrf_token()}}" url="{{route('upload')}}"></uploadfooter>

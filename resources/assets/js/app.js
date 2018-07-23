@@ -24,6 +24,7 @@ Vue.use(lodash)
 const app = new Vue({
     el: '#app',
     components: {
+      'TitleArea': () => import('./components/TitleArea.vue' /* webpackChunkName: "js/title-area" */),
       'ArticleList': () => import('./components/ArticleList.vue' /* webpackChunkName: "js/article-list" */),
       'ArticleDetail': () => import('./components/ArticleDetail.vue' /* webpackChunkName: "js/article-detail" */),
       'Breadcrumbs': () => import('./components/Breadcrumbs.vue' /* webpackChunkName: "js/breadcrumbs" */),

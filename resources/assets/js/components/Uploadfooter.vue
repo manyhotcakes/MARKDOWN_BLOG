@@ -50,7 +50,7 @@ export default {
       const style = []
       if (!this.isDisplay) {
         style.push({
-          transform: 'translateY(300px)'
+          transform: 'translateY(400px)'
           // bottom: '-300px'
         })
       }

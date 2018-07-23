@@ -88,7 +88,7 @@ class AuthController extends Controller
             $article->image_path= $image_path;
             $article->save();
             DB::commit();
-            return redirect()->route('home')->with('success', '保存しました。');
+            return redirect()->route('home')->with('success', __('投稿しました。'));
           } catch (\Exception $e) {
             // 失敗時はロールバック
             DB::rollback();
@@ -99,14 +99,14 @@ class AuthController extends Controller
             return redirect()
                     ->back()
                     ->withInput()
-                    ->withErrors(['article' => 'エラーが発生しました。' . $e->getMessage()]);
+                    ->withErrors(['article' => __('エラーが発生しました。') . $e->getMessage()]);
           }
       }
 
       return redirect()
               ->back()
               ->withInput()
-              ->withErrors(['article' => '画像がアップロードされていないか不正なデータです。']);
+              ->withErrors(['article' => __('画像がアップロードされていないか不正なデータです。') ]);
     }
 
     /**
@@ -121,14 +121,14 @@ class AuthController extends Controller
         $article->delete_flg = true;
         $article->save();
         DB::commit();
-        return redirect()->route('home')->with('success', '保存しました。');
+        return redirect()->route('home')->with('success', __('削除に成功しました') );
       } catch (\Exception $e) {
         // 失敗時
         Log::error($e);
         return redirect()
                 ->back()
                 ->withInput()
-                ->withErrors(['article' => '削除に失敗しました']);
+                ->withErrors(['article' => __('削除に失敗しました') ]);
       }
     }
 }
